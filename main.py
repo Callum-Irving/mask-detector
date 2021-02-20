@@ -21,6 +21,9 @@ capture = cv2.VideoCapture(0)  # Video capture using first camera
 frame_counter = 0
 num_captured_faces = 0
 
+if not os.path.exists("Captured Faces"):
+    os.mkdir("Captured Faces")
+
 while True:
     # Get frame from webcam
     _, frame = capture.read()
