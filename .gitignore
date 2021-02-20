@@ -1,2 +1,3 @@
 .vscode
-datasets
+datasets/*
+!datasets/haarcascade_mouth.xml
