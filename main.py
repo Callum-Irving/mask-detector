@@ -52,9 +52,15 @@ while True:
         for (mx, my, mw, mh) in mouthes:
             cv2.rectangle(cropped_colour, (mx, my),
                           (mx+mw, my+mh), (0, 0, 255), 2)
-            if frame_counter > 5:
+            if frame_counter > 30:
+                if os.listdir("Captured Faces"):
+                    face_num = int(os.listdir("Captured Faces")
+                                   [-1].split(".")[0]) + 1
+                else:
+                    face_num = 0
+
                 cv2.imwrite("Captured Faces/" +
-                            str(num_captured_faces) + ".jpg", frame)
+                            str(face_num) + ".jpg", frame)
                 frame_counter = 0
                 num_captured_faces += 1
 

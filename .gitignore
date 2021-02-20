@@ -1,3 +1,4 @@
 .vscode
 datasets/*
 !datasets/haarcascade_mouth.xml
+Captured Faces/*
