@@ -6,10 +6,13 @@ import cv2
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt, QThread
 import numpy as np
 import os
+from datetime import datetime
 
 
 class VideoThread(QThread):
     change_pixmap_signal = pyqtSignal(np.ndarray)
+    change_label_signal = pyqtSignal(bool)
+    screenshot_signal = pyqtSignal(str)
 
     def run(self):
         cv2_base_dir = os.path.dirname(os.path.abspath(cv2.__file__))
@@ -57,8 +60,10 @@ class VideoThread(QThread):
                 mouthes = mouth_model.detectMultiScale(cropped_grey)
                 if len(mouthes) > 0:
                     frame_counter += 1
+                    self.change_label_signal.emit(False)
                 else:
                     frame_counter = 0
+                    self.change_label_signal.emit(True)
 
                 for (mx, my, mw, mh) in mouthes:
                     cv2.rectangle(cropped_colour, (mx, my),
@@ -72,6 +77,8 @@ class VideoThread(QThread):
 
                         cv2.imwrite("Captured Faces/" +
                                     str(face_num) + ".jpg", frame)
+                        self.screenshot_signal.emit(
+                            "Screenshot take at " + str(datetime.now()))
                         frame_counter = 0
                         num_captured_faces += 1
 
@@ -91,11 +98,13 @@ class Webcam(QWidget):
         self.image_label.resize(self.disply_width, self.display_height)
         # create a text label
         self.textLabel = QLabel('Webcam')
+        self.screenShot = QLabel('')
 
         # create a vertical box layout and add the two labels
         vbox = QVBoxLayout()
         vbox.addWidget(self.image_label)
         vbox.addWidget(self.textLabel)
+        vbox.addWidget(self.screenShot)
         # set the vbox layout as the widgets layout
         self.setLayout(vbox)
 
@@ -103,6 +112,8 @@ class Webcam(QWidget):
         self.thread = VideoThread()
         # connect its signal to the update_image slot
         self.thread.change_pixmap_signal.connect(self.update_image)
+        self.thread.change_label_signal.connect(self.update_label)
+        self.thread.screenshot_signal.connect(self.screenshot_update)
         # start the thread
         self.thread.start()
 
@@ -111,6 +122,19 @@ class Webcam(QWidget):
         """Updates the image_label with a new opencv image"""
         qt_img = self.convert_cv_qt(cv_img)
         self.image_label.setPixmap(qt_img)
+
+    @pyqtSlot(bool)
+    def update_label(self, status):
+        if status == True:
+            self.textLabel.setText("Masks detected")
+            self.textLabel.setStyleSheet("color: black;")
+        else:
+            self.textLabel.setText("Unmasked person detected")
+            self.textLabel.setStyleSheet("color: red;")
+
+    @pyqtSlot(str)
+    def screenshot_update(self, date):
+        self.screenShot.setText(date)
 
     def convert_cv_qt(self, cv_img):
         """Convert from an opencv image to QPixmap"""

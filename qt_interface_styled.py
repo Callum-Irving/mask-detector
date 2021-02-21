@@ -140,7 +140,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate(
-            "MainWindow", "<html><head/><body><p align=\"center\"><span style=\" color:#ffffff;\">Mask Detector System</span></p></body></html>"))
+            "MainWindow", "<html><head/><body><p align=\"center\"><span style=\" color:#ffffff;\">MaskUp</span></p></body></html>"))
         self.pushButton.setText(_translate("MainWindow", "Go to dashboard"))
         self.pushButton_5.setText(_translate("MainWindow", "Go Back"))
         self.label_2.setText(_translate(
