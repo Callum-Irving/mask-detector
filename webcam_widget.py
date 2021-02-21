@@ -40,7 +40,6 @@ class VideoThread(QThread):
             grey_frame = cv2.equalizeHist(grey_frame)
 
             faces = face_model.detectMultiScale(grey_frame, 1.3, 5)
-            cv2.rectangle(frame, (0, 0), (50, 50), (0, 255, 0), 2)
 
             for (x, y, w, h) in faces:
                 print("Face detected")
@@ -83,7 +82,7 @@ class VideoThread(QThread):
         capture.release()
 
 
-class App(QWidget):
+class Webcam(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Qt live label demo")
