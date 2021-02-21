@@ -2,3 +2,5 @@
 datasets/*
 !datasets/haarcascade_mouth.xml
 Captured Faces/*
+venv
+__pycache__

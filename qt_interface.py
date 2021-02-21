@@ -1,38 +1,28 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
 import sys
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QMainWindow
+
+from ui_test import Ui_MainWindow
 
 
-class MyWindow(QMainWindow):
+class MainWindow:
     def __init__(self):
-        super(MyWindow, self).__init__()
-        self.initUI()
+        self.main_win = QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.main_win)
 
-    def button_clicked(self):
-        self.label.setText("you pressed the button")
-        self.update()
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page)
 
-    def initUI(self):
-        self.setGeometry(200, 200, 300, 300)
-        self.setWindowTitle("Tech With Tim")
+        self.ui.pushButton.clicked.connect(self.goDashboard)
 
-        self.label = QtWidgets.QLabel(self)
-        self.label.setText("my first label!")
-        self.label.move(50, 50)
+    def show(self):
+        self.main_win.show()
 
-        self.b1 = QtWidgets.QPushButton(self)
-        self.b1.setText("click me!")
-        self.b1.clicked.connect(self.button_clicked)
-
-    def update(self):
-        self.label.adjustSize()
+    def goDashboard(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page_2)
 
 
-def window():
-    app = QApplication(sys.argv)
-    win = MyWindow()
-    win.show()
-    sys.exit(app.exec_())
-
-
-window()
+app = QApplication(sys.argv)
+win = MainWindow()
+win.show()
+sys.exit(app.exec_())
