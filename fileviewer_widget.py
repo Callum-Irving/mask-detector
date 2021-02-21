@@ -60,6 +60,6 @@ class CapturedDisplayer(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    a = Webcam()
+    a = CapturedDisplayer()
     a.show()
     sys.exit(app.exec_())
