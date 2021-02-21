@@ -42,7 +42,6 @@ class VideoThread(QThread):
             faces = face_model.detectMultiScale(grey_frame, 1.3, 5)
 
             for (x, y, w, h) in faces:
-                print("Face detected")
                 # Draw outline around face
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
                 cropped_grey = grey_frame[y:y+h, x:x+w]
@@ -50,7 +49,6 @@ class VideoThread(QThread):
 
                 eyes = eye_model.detectMultiScale(cropped_grey)
                 for (ex, ey, ew, eh) in eyes:
-                    print("eye detected")
                     # Draw filled black rectangle over eyes so that
                     #   mouth detector does not detect eyes
                     cv2.rectangle(cropped_grey, (ex, ey),

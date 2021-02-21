@@ -15,8 +15,10 @@ class MainWindow:
 
         self.ui.pushButton.clicked.connect(self.goDashboard)
         self.ui.pushButton_5.clicked.connect(self.goHome)
+        self.ui.pushButton_3.clicked.connect(self.goFiles)
         self.ui.pushButton_4.clicked.connect(self.goVideo)
         self.ui.pushButton_6.clicked.connect(self.goDashboard)
+        self.ui.pushButton_7.clicked.connect(self.goDashboard)
 
     def show(self):
         self.main_win.show()
@@ -29,6 +31,9 @@ class MainWindow:
 
     def goVideo(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_3)
+
+    def goFiles(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page_4)
 
 
 app = QApplication(sys.argv)

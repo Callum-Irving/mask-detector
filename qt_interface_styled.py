@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from webcam_widget import Webcam
+from fileviewer_widget import CapturedDisplayer
 
 
 class Ui_MainWindow(object):
@@ -113,6 +114,12 @@ class Ui_MainWindow(object):
                                         "color: rgb(255, 255, 255);")
         self.pushButton_7.setObjectName("pushButton_7")
         self.verticalLayout_5.addWidget(self.pushButton_7)
+
+        # Add file viewer
+        self.captured = CapturedDisplayer()
+        self.captured.setObjectName("captured_images")
+        self.verticalLayout_5.addWidget(self.captured)
+
         self.label_4 = QtWidgets.QLabel(self.page_4)
         self.label_4.setObjectName("label_4")
         self.verticalLayout_5.addWidget(self.label_4)
