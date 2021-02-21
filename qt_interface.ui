@@ -19,12 +19,16 @@
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(216, 195, 133);
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -39,7 +43,7 @@
            </font>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Mask Detector System&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Mask Detector System&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -60,6 +64,11 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(233, 128, 116);
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>PushButton</string>
             </property>
@@ -80,6 +89,11 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(233, 128, 116);
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);</string>
+            </property>
             <property name="text">
              <string>Go to dashboard</string>
             </property>
@@ -109,8 +123,11 @@
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <widget class="QLabel" name="label_2">
+          <property name="styleSheet">
+           <string notr="true">*{background colour: rgb(17, 100, 102)}</string>
+          </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Admin Dashboard&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; color:#ffffff;&quot;&gt;Admin Dashboard&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -119,6 +136,11 @@
           <property name="autoFillBackground">
            <bool>false</bool>
           </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(233, 128, 116);
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);</string>
+          </property>
           <property name="text">
            <string>View Live Stream</string>
           </property>
@@ -126,6 +148,11 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_3">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(233, 128, 116);
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);</string>
+          </property>
           <property name="text">
            <string>View Screenshots</string>
           </property>
