@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
 
-from ui_test import Ui_MainWindow
+from qt_interface_ui import Ui_MainWindow
 
 
 class MainWindow:
