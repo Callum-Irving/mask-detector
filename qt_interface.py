@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
 
-from qt_interface_ui import Ui_MainWindow
+from qt_interface_styled import Ui_MainWindow
 
 
 class MainWindow:
@@ -14,12 +14,21 @@ class MainWindow:
         self.ui.stackedWidget.setCurrentWidget(self.ui.page)
 
         self.ui.pushButton.clicked.connect(self.goDashboard)
+        self.ui.pushButton_5.clicked.connect(self.goHome)
+        self.ui.pushButton_4.clicked.connect(self.goVideo)
+        self.ui.pushButton_6.clicked.connect(self.goDashboard)
 
     def show(self):
         self.main_win.show()
 
     def goDashboard(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_2)
+
+    def goHome(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page)
+
+    def goVideo(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page_3)
 
 
 app = QApplication(sys.argv)
